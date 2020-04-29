@@ -2,8 +2,8 @@
 ### 第一周的作业
 ### 第二周的作业
 
-## 学号：G20200447010762
-## 姓名：任好
-## 班级：二班
-## 小组：一天不学习就难受AAA
-## 作业&总结链接：https://github.com/jiuyue09/Frontend-01-Template/tree/master/week01
+#学号：G20200447010762
+#姓名：任好
+#班级：二班
+#小组：一天不学习就难受
+#作业&总结链接：https://github.com/jiuyue09/Frontend-01-Template/tree/master/week01
