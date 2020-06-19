@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container {
+            width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            /* height: 1000px; */
+            /* background: greenyellow; */
+        }
+
+        .cell {
+            width: 10px;
+            height: 10px;
+            background-color: gray;
+            border-bottom: solid 1px white;
+            border-right: solid 1px white;
+            vertical-align: middle;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <button onclick="localStorage.map=JSON.stringify(map)">save</button>
+</body>
+
+
+
+</html>
+
+<script>
+    var map = localStorage.map ? JSON.parse(localStorage.map) : Array(1000).fill(0);
+    let mouse = false;
+    let clear = false;
+    function createElement() {
+        let container = document.getElementById('container');
+
+        for (let j = 0; j < 100; j++) {
+            for (let k = 0; k < 100; k++) {
+                let cell = document.createElement('div');
+                cell.classList.add('cell');
+                if (map[j * 100 + k] === 1) {
+                    cell.style.background = 'black';
+                }
+                cell.addEventListener("mouseover", () => {
+                    if (mouse) {
+                        if (clear) {
+                            cell.style.background = "gray"
+                            map[j * 100 + k] = 0;
+                        } else {
+                            cell.style.background = "black"
+                            map[j * 100 + k] = 1;
+                        }
+                    }
+                })
+                container.appendChild(cell);
+            }
+        }
+    }
+
+    document.addEventListener('mousedown', e => {
+        mouse = true
+        if (e.button == 2) {
+            clear = true;
+        } else {
+            clear = false;
+        }
+
+    })
+
+    document.addEventListener('mouseup', () => { mouse = false })
+
+
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    createElement();
+
+</script>
